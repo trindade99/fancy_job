@@ -69,13 +69,17 @@ def update_cron_with_random_time():
     print(f"Cron job updated to run at {random_hour}:{random_minute} tomorrow.")
 
 def main():
+    today_interactions = random.randint(1, 10)
+    print(f"You will contribute {today_interactions} times today. Keep it up!")
     try:
-        current_number = read_number()
-        new_number = current_number + 1
-        write_number(new_number)
+        while(today_interactions >= 1):
+            current_number = read_number()
+            new_number = current_number + 1
+            write_number(new_number)
 
-        git_commit()
-        git_push()
+            git_commit()
+            git_push()
+            today_interactions = today_interactions - 1
 
         update_cron_with_random_time()
 
@@ -85,4 +89,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main() 
+    main()
